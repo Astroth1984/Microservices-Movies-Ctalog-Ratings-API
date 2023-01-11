@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MovieInfoServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovieInfoServiceApplication.class, args);
+		//SpringApplication.run(MovieInfoServiceApplication.class, args);
+		System.getProperties().put( "server.port", 8181 );  //8181 port is set here
+	    SpringApplication.run(MovieInfoServiceApplication.class, args);
 	}
 
 }
