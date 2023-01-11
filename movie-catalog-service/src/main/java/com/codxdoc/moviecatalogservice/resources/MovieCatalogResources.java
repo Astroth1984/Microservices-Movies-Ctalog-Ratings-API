@@ -1,10 +1,10 @@
 package com.codxdoc.moviecatalogservice.resources;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +19,11 @@ import com.codxdoc.moviecatalogservice.models.Rating;
 @RequestMapping("/catalog")
 public class MovieCatalogResources {
 	
+	@Autowired
+	private RestTemplate restTemplate; 
+	
 	@GetMapping("/{userId}")
 	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
-		
-		RestTemplate restTemplate = new RestTemplate();
-		
 		// get all rated movies IDs - hard coded Ratings (for now)
 		// Assuming this is th response from Rating-Data-Api
 		List<Rating> ratings = Arrays.asList(
